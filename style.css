@@ -158,6 +158,51 @@ h1 {
   font-size: 14px;
 }
 
+.notifikasi {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: deeppink;
+  color: white;
+  font-size: 17px;
+  padding: 12px 25px;
+  border-radius: 8px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+  animation: muncul 0.3s ease;
+}
+
+@keyframes muncul {
+  from { opacity: 0; top: 0; }
+  to { opacity: 1; top: 20px; }
+}
+
 .hidden {
   display: none;
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 15px 10px;
+  }
+
+  .kertas {
+    padding: 20px 15px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  .statistik {
+    gap: 8px;
+  }
+
+  .angka {
+    font-size: 26px;
+  }
+
+  .label {
+    font-size: 12px;
+  }
 }
