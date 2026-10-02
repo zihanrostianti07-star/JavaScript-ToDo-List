@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do List - Zihan Rostianti</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="atas">
+    <p>Web Zihan Rostianti</p>
+  </header>
+
+  <div class="kertas">
+    <h1>To-Do List</h1>
+    <p class="info">Tulis tugasmu, centang kalau sudah selesai.</p>
+
+    <div class="form-tambah">
+      <input type="text" id="input-tugas" placeholder="Tugas hari ini..." autocomplete="off">
+      <button id="btn-tambah">Tambah</button>
+    </div>
+
+    <p class="statistik">
+      <span id="jumlah-tugas">0</span> tugas,
+      <span id="jumlah-selesai">0</span> selesai
+    </p>
+
+    <ul id="daftar-tugas"></ul>
+
+    <p id="pesan-kosong">Belum ada tugas.</p>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

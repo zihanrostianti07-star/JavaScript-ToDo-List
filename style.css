@@ -1,0 +1,145 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(243, 180, 205);
+  font-family: "Times New Roman", Times, serif;
+  color: #050505;
+  margin: 0;
+  padding: 20px;
+}
+
+
+input, button {
+  font-family: inherit;
+}
+
+
+h1, p {
+  margin: 0;
+}
+
+
+.atas {
+  width: 400px;
+  max-width: 100%;
+  margin: 0 auto 10px auto;
+}
+
+.atas p {
+  font-weight: bold;
+  color: deeppink;
+}
+
+
+.kertas {
+  background-color: white;
+  width: 400px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  border: 3px solid deeppink;
+  border-radius: 5px;
+}
+
+h1 {
+  color: deeppink;
+  font-size: 28px;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.info {
+  color: gray;
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+
+.form-tambah {
+  display: flex;
+  gap: 10px;
+}
+
+#input-tugas {
+  flex-grow: 1;
+  padding: 8px;
+  font-size: 15px;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+
+#btn-tambah {
+  background-color: deeppink;
+  color: white;
+  padding: 8px 15px;
+  font-size: 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#btn-tambah:hover {
+  background-color: mediumvioletred;
+}
+
+.statistik {
+  font-size: 14px;
+  margin: 15px 0 10px 0;
+}
+
+
+#daftar-tugas {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#daftar-tugas li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border-bottom: 1px solid pink;
+}
+
+.teks {
+  flex-grow: 1;
+  font-size: 15px;
+}
+
+
+.completed {
+  text-decoration: line-through;
+  color: gray;
+}
+
+.btn-hapus {
+  background-color: white;
+  color: red;
+  padding: 4px 10px;
+  border: 1px solid red;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-hapus:hover {
+  background-color: red;
+  color: white;
+}
+
+#pesan-kosong {
+  color: gray;
+  font-size: 14px;
+  text-align: center;
+  padding: 15px;
+}
+
+
+.hidden {
+  display: none;
+}
