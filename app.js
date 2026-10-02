@@ -12,6 +12,7 @@ const daftarTugas = document.getElementById("daftar-tugas"); // <ul> wadah dafta
 const jumlahTugas = document.getElementById("jumlah-tugas"); // <span> angka total tugas
 const jumlahSelesai = document.getElementById("jumlah-selesai"); // <span> angka tugas selesai
 const pesanKosong = document.getElementById("pesan-kosong"); // tulisan "Belum ada tugas"
+const jumlahBelum = document.getElementById("jumlah-belum"); // <p> angka tugas yang belum selesai
 
 // Aktivitas 2: Fungsi untuk memperbarui statistik
 // Fungsi ini dipanggil setiap kali ada tugas ditambah, dihapus, atau dicentang
@@ -23,9 +24,14 @@ function perbaruiStatistik() {
   // "li.completed" = hanya li yang punya class "completed" (tugas yang sudah dicentang)
   const selesai = daftarTugas.querySelectorAll("li.completed").length;
 
+  // belum selesai = total dikurangi yang sudah selesai
+  // harus ditulis SETELAH variabel selesai dibuat
+  const belum = total - selesai;
+
   // .innerText = mengganti teks yang tampil di dalam elemen
   jumlahTugas.innerText = total;
   jumlahSelesai.innerText = selesai;
+  jumlahBelum.innerText = belum;
 
   // Conditional: apakah daftar kosong?
   if (total === 0) {

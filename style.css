@@ -3,60 +3,56 @@
 }
 
 body {
-  background-color: rgb(243, 180, 205);
+  background-color: pink;
   font-family: "Times New Roman", Times, serif;
-  color: #050505;
+  color: #333333;
   margin: 0;
-  padding: 20px;
+  padding: 30px 20px;
 }
-
 
 input, button {
-  font-family: inherit;
+  font-family: Times New Roman, Times, serif;
 }
-
 
 h1, p {
   margin: 0;
 }
 
-
 .atas {
-  width: 400px;
+  width: 560px;
   max-width: 100%;
-  margin: 0 auto 10px auto;
+  margin: 0 auto 12px auto;
 }
 
 .atas p {
   font-weight: bold;
+  font-size: 18px;
   color: deeppink;
 }
 
-
 .kertas {
   background-color: white;
-  width: 400px;
+  width: 560px;
   max-width: 100%;
   margin: 0 auto;
-  padding: 20px;
-  border: 3px solid deeppink;
-  border-radius: 5px;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
 }
 
 h1 {
   color: deeppink;
-  font-size: 28px;
+  font-size: 34px;
   text-align: center;
   margin-bottom: 5px;
 }
 
 .info {
   color: gray;
-  font-size: 14px;
+  font-size: 16px;
   text-align: center;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
-
 
 .form-tambah {
   display: flex;
@@ -65,50 +61,44 @@ h1 {
 
 #input-tugas {
   flex-grow: 1;
-  padding: 8px;
-  font-size: 15px;
-  border: 1px solid gray;
-  border-radius: 5px;
+  padding: 12px;
+  font-size: 17px;
+  border: 1px solid lightgray;
+  border-radius: 8px;
 }
 
 #btn-tambah {
   background-color: deeppink;
   color: white;
-  padding: 8px 15px;
-  font-size: 15px;
+  padding: 12px 22px;
+  font-size: 17px;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: opacity 0.3s ease;
 }
 
 #btn-tambah:hover {
-  background-color: mediumvioletred;
+  opacity: 0.8;
 }
-
-.statistik {
-  font-size: 14px;
-  margin: 15px 0 10px 0;
-}
-
 
 #daftar-tugas {
   list-style: none;
-  margin: 0;
+  margin: 20px 0 0 0;
   padding: 0;
 }
 
 #daftar-tugas li {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px;
-  border-bottom: 1px solid pink;
+  gap: 12px;
+  padding: 12px 10px;
+  border-bottom: 1px solid lightgray;
 }
 
 .teks {
   flex-grow: 1;
-  font-size: 15px;
+  font-size: 17px;
 }
 
 
@@ -119,26 +109,54 @@ h1 {
 
 .btn-hapus {
   background-color: white;
-  color: red;
-  padding: 4px 10px;
-  border: 1px solid red;
-  border-radius: 5px;
+  color: deeppink;
+  padding: 5px 12px;
+  font-size: 14px;
+  border: 1px solid deeppink;
+  border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .btn-hapus:hover {
-  background-color: red;
+  background-color: deeppink;
   color: white;
 }
 
 #pesan-kosong {
   color: gray;
-  font-size: 14px;
+  font-size: 16px;
   text-align: center;
-  padding: 15px;
+  padding: 25px 0;
 }
 
+
+.statistik {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+
+.kotak-stat {
+  flex-grow: 1;
+  background-color: white;
+  padding: 18px 5px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.angka {
+  color: deeppink;
+  font-size: 34px;
+  font-weight: bold;
+}
+
+.label {
+  color: gray;
+  font-size: 14px;
+}
 
 .hidden {
   display: none;
