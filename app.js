@@ -66,9 +66,9 @@ function tambahTugas() {
   // .trim() = menghapus spasi di awal dan akhir teks
   const isiTugas = inputTugas.value.trim();
 
-  // Validasi: kalau input kosong, tampilkan notifikasi lalu hentikan fungsi
+    // Validasi: kalau input kosong, tampilkan alert lalu hentikan fungsi
   if (isiTugas === "") {
-    tampilNotifikasi("Catatan Anda tidak boleh kosong");
+    alert("Catatan Anda tidak boleh kosong");
     return; // return = berhenti di sini, kode di bawahnya tidak dijalankan
   }
 
