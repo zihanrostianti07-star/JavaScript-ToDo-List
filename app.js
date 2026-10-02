@@ -9,10 +9,11 @@
 const inputTugas = document.getElementById("input-tugas"); // kolom input tempat mengetik tugas
 const btnTambah = document.getElementById("btn-tambah"); // tombol "Tambah"
 const daftarTugas = document.getElementById("daftar-tugas"); // <ul> wadah daftar tugas
-const jumlahTugas = document.getElementById("jumlah-tugas"); // <span> angka total tugas
-const jumlahSelesai = document.getElementById("jumlah-selesai"); // <span> angka tugas selesai
+const jumlahTugas = document.getElementById("jumlah-tugas"); // angka total tugas
+const jumlahSelesai = document.getElementById("jumlah-selesai"); // angka tugas selesai
+const jumlahBelum = document.getElementById("jumlah-belum"); // angka tugas belum selesai
 const pesanKosong = document.getElementById("pesan-kosong"); // tulisan "Belum ada tugas"
-const jumlahBelum = document.getElementById("jumlah-belum"); // <p> angka tugas yang belum selesai
+const notifikasi = document.getElementById("notifikasi"); // kotak notifikasi di atas halaman
 
 // Aktivitas 2: Fungsi untuk memperbarui statistik
 // Fungsi ini dipanggil setiap kali ada tugas ditambah, dihapus, atau dicentang
@@ -25,7 +26,6 @@ function perbaruiStatistik() {
   const selesai = daftarTugas.querySelectorAll("li.completed").length;
 
   // belum selesai = total dikurangi yang sudah selesai
-  // harus ditulis SETELAH variabel selesai dibuat
   const belum = total - selesai;
 
   // .innerText = mengganti teks yang tampil di dalam elemen
@@ -33,7 +33,7 @@ function perbaruiStatistik() {
   jumlahSelesai.innerText = selesai;
   jumlahBelum.innerText = belum;
 
-  // Conditional: apakah daftar kosong?
+  // Percabangan: apakah daftar kosong?
   if (total === 0) {
     // classList.remove("hidden") = hapus class hidden supaya pesan muncul
     pesanKosong.classList.remove("hidden");
@@ -43,15 +43,32 @@ function perbaruiStatistik() {
   }
 }
 
+// Fungsi untuk menampilkan notifikasi
+// pesan = teks yang mau ditampilkan di dalam notifikasi
+let timerNotifikasi; // menyimpan timer supaya tidak bertumpuk kalau diklik berkali-kali
+
+function tampilNotifikasi(pesan) {
+  notifikasi.innerText = pesan; // isi teks notifikasi
+  notifikasi.classList.remove("hidden"); // munculkan notifikasi
+
+  // clearTimeout = batalkan timer sebelumnya (kalau ada)
+  clearTimeout(timerNotifikasi);
+
+  // setTimeout = jalankan kode setelah beberapa waktu (3000 ms = 3 detik)
+  timerNotifikasi = setTimeout(function () {
+    notifikasi.classList.add("hidden"); // sembunyikan lagi notifikasi
+  }, 3000);
+}
+
 // Aktivitas 3: Fungsi utama untuk menambah tugas baru
 function tambahTugas() {
   // .value = mengambil teks yang diketik user di kolom input
   // .trim() = menghapus spasi di awal dan akhir teks
   const isiTugas = inputTugas.value.trim();
 
-  // Validasi: kalau input kosong, tampilkan alert lalu hentikan fungsi
+  // Validasi: kalau input kosong, tampilkan notifikasi lalu hentikan fungsi
   if (isiTugas === "") {
-    alert("Catatan Anda tidak boleh kosong");
+    tampilNotifikasi("Catatan Anda tidak boleh kosong");
     return; // return = berhenti di sini, kode di bawahnya tidak dijalankan
   }
 
@@ -73,22 +90,30 @@ function tambahTugas() {
   btnHapus.innerText = "Hapus"; // mengisi tulisan pada tombol
 
   // Event listener pada checkbox
-  // "change" = jalan setiap kali checkbox dicentang atau dicentang ulang
+  // "change" = jalan setiap kali checkbox dicentang atau centangnya dilepas
   checkbox.addEventListener("change", function () {
     // classList.toggle("nama-class", kondisi)
-    // kalau checkbox dicentang (true) = class "completed" ditambahkan, teks jadi dicoret
-    // kalau centang dilepas (false) = class "completed" dihapus, teks kembali normal
+    // dicentang (true) = class "completed" ditambahkan, teks jadi dicoret
+    // centang dilepas (false) = class "completed" dihapus, teks kembali normal
     teks.classList.toggle("completed", checkbox.checked);
     li.classList.toggle("completed", checkbox.checked);
 
-    perbaruiStatistik(); // update angka "selesai" di layar
+    perbaruiStatistik(); // update angka di layar
+
+    // pesan berbeda tergantung checkbox dicentang atau tidak
+    if (checkbox.checked) {
+      tampilNotifikasi("Tugas ditandai selesai");
+    } else {
+      tampilNotifikasi("Tugas ditandai belum selesai");
+    }
   });
 
   // Event listener pada tombol hapus
   // "click" = jalan ketika tombol diklik
   btnHapus.addEventListener("click", function () {
     li.remove(); // remove() = menghapus elemen li dari halaman
-    perbaruiStatistik(); // update angka total dan selesai
+    perbaruiStatistik(); // update angka di layar
+    tampilNotifikasi("Tugas dihapus");
   });
 
   // appendChild = memasukkan elemen ke dalam elemen induk (parent)
@@ -104,7 +129,10 @@ function tambahTugas() {
   inputTugas.value = "";
   inputTugas.focus(); // kursor otomatis kembali ke kolom input
 
-  perbaruiStatistik(); // update angka total
+  perbaruiStatistik(); // update angka di layar
+
+  // tampilkan notifikasi kalau tugas berhasil ditambahkan
+  tampilNotifikasi("Tugas berhasil ditambahkan");
 }
 
 // Aktivitas 4: EVENT LISTENER
